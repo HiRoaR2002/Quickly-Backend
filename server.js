@@ -6,12 +6,14 @@ const userRoutes = require('./routes/userRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes')
+const cors = require('cors');
 dotenv.config();
 connectDB();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 const server = app.listen(PORT, console.log(`Server has started on PORT: ${PORT}`));
 console.log("HELLO");
 app.get('/', (req, res) => {
